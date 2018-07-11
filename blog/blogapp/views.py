@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect,Http404
 from comments.forms import CommentForm
 from .models import Post,Category,Tag
 import markdown
@@ -8,7 +8,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils.text import slugify
 from markdown.extensions.toc import TocExtension
 from django.db.models import Q
-
+from .forms import PostForm
+from django.urls import reverse
 '''
 def index(request):
     post_list = Post.objects.all().order_by('-created_time')
@@ -296,3 +297,15 @@ def search(request):
 
 def about(request):
     return render(request, 'blog/about.html')
+
+def edit_post(request,pk):
+    post=Post.objects.get(pk=pk)
+    if request.method!='POST':
+        form=PostForm(instance=post)
+    else:
+        form=PostForm(instance=post,data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('blogapp:detail',args=[post.pk]))
+    context={'form':form,'post':post}
+    return render(request,'blog/edit_post.html',context) 

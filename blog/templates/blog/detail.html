@@ -1,7 +1,4 @@
-
-
 {% extends 'base.html' %}
-
 {% block main %}
                 <article class="post post-{{ post.pk }}">
                     <header class="entry-header">
@@ -15,6 +12,13 @@
                             <span class="comments-link"><a href="#">{{ post.comment_set.count }} 评论</a></span>
                             <span class="views-count"><a href="#">{{ post.views }} 阅读</a></span>
                         </div>
+                        <div style="float:right">
+                            {% if user.is_authenticated %}
+                            <p>
+                                <a href="{% url 'blogapp:edit_post' post.pk %}" >编辑</a>
+                            </p>                                
+                            {% endif %}
+                        </div><br>
                     </header>
                     <div class="entry-content clearfix">
                         {{post.body|safe}}

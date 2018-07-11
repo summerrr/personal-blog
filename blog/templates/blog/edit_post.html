@@ -1,0 +1,25 @@
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<!DOCTYPE html>
+<html>
+    <body>
+        <div class="container">
+            <div class="page-header">
+               <h2>
+                 <a href="{{post.get_absolute_url}}">{{post.title}}</a>
+               </h2>
+            </div>
+            <div>
+                <form action="{{post.get_absolute_url}}" method='POST' class="form">
+                    {% csrf_token %}
+                    {% bootstrap_form form%}
+                      
+                    {% buttons %}
+                        <button name="submit" class="btn btn_primary"> save changes</button>
+                    {% endbuttons %}
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

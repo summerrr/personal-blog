@@ -16,6 +16,6 @@ urlpatterns = [
 
 	path('tag/<pk>',views.TagView.as_view(),name='tag'),
 	#path('search',views.search,name='search')
-	path('about',views.about,name='about')
-
+	path('about',views.about,name='about'),
+	path('edit/<int:pk>',views.edit_post,name='edit_post')
 ]

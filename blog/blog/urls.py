@@ -22,5 +22,6 @@ urlpatterns = [
     path('',include(('blogapp.urls','blogapp'),namespace='blogapp')),
     path('',include(('comments.urls','comments'),namespace='comments')),
     path('all/rss',AllPostsRssFeed(), name='rss'),
-    path('search/',include('haystack.urls'))#一定不要写app name和namespace
+    path('search/',include('haystack.urls')),#一定不要写app name和namespace
+    path('user/',include(('user.urls','user'),namespace='user'))
 ]
