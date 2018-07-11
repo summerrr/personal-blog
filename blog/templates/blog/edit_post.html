@@ -7,11 +7,11 @@
         <div class="container">
             <div class="page-header">
                <h2>
-                 <a href="{{post.get_absolute_url}}">{{post.title}}</a>
+                 <a href="{{post.get_absolute_url}}">修改{{post.title}}</a>
                </h2>
             </div>
             <div>
-                <form action="{{post.get_absolute_url}}" method='POST' class="form">
+                <form action="{% url 'blogapp:edit_post' post.pk %}" method='POST' class="form">
                     {% csrf_token %}
                     {% bootstrap_form form%}
                       
