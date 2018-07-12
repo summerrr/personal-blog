@@ -10,6 +10,10 @@ from markdown.extensions.toc import TocExtension
 from django.db.models import Q
 from .forms import PostForm
 from django.urls import reverse
+
+def home(request):
+    return render(request,'blog/home.html')
+
 '''
 def index(request):
     post_list = Post.objects.all().order_by('-created_time')

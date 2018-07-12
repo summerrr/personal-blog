@@ -12,7 +12,8 @@ urlpatterns = [
 	path('category/<int:pk>',views.CategoryView.as_view(),name='category'),
 	
 	#path('',views.index,name='index'),
-	path('',views.IndexView.as_view(), name='index'),#类视图下
+	path('index',views.IndexView.as_view(), name='index'),#类视图下
+	path('',views.home,name='home'),
 
 	path('tag/<pk>',views.TagView.as_view(),name='tag'),
 	#path('search',views.search,name='search')
