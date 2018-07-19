@@ -148,11 +148,13 @@ if cwd=='/app' or cwd[:4]=='/tmp':
     
     SECURE_PROXY_SSL_HEADER=('HTTP_X_FORWARDED_PROTO','https')
 
-    ALLOWED_HOSTS=['*']#支持所有的主机头
+    ALLOWED_HOSTS=['mysummerblog.herokuapp.com']#支持所有的主机头
+    DEBUG=False
+	
     #静态资产配置
     BASE_DIR=os.path.dirname(os.path.abspath(__file__))
     STATIC_ROOT='staticfiles'
-	STATIC_URL = '/static/'
+    STATIC_URL = '/static/'
     STATICFILES_DIRS=(
         os.path.join(BASE_DIR,'static'),
     )
