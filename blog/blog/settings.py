@@ -148,7 +148,7 @@ if cwd=='/app' or cwd[:4]=='/tmp':
     
     SECURE_PROXY_SSL_HEADER=('HTTP_X_FORWARDED_PROTO','https')
 
-    ALLOWED_HOSTS=['mysummerblog.herokuapp.com']#支持所有的主机头
+    ALLOWED_HOSTS=['mysummerblog.herokuapp.com']#只允许heroku托管这个项目
     DEBUG=False
 	
     #静态资产配置
